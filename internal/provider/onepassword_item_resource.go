@@ -30,6 +30,7 @@ import (
 var _ resource.Resource = &OnePasswordItemResource{}
 var _ resource.ResourceWithImportState = &OnePasswordItemResource{}
 var _ resource.ResourceWithValidateConfig = &OnePasswordItemResource{}
+var _ resource.ResourceWithUpgradeState = &OnePasswordItemResource{}
 
 func NewOnePasswordItemResource() resource.Resource {
 	return &OnePasswordItemResource{}
@@ -221,6 +222,7 @@ func (r *OnePasswordItemResource) Schema(ctx context.Context, req resource.Schem
 	}
 
 	resp.Schema = schema.Schema{
+		Version: 1,
 		// This description is used by the documentation generator and the language server.
 		MarkdownDescription: "A 1Password Item.",
 
